@@ -23,7 +23,7 @@ app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather App',
         name: 'John Reiner'
-    })
+    }) 
 })
 
 app.get('/about', (req, res) => {
@@ -42,9 +42,50 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
+
+    if(req.query.address) {
+        res.send({
+            forcast: 'Sunny',
+            location: req.query.address
+        })        
+    } else {
+        res.send({
+            error: 'You must provide an address'
+        })
+    }
+
+
+})
+
+app.get('/products', (req, res) => {
+
+    if (!req.query.search) {
+        return res.send({
+            error: 'You must provide a search term'
+        })
+    }
+
+    console.log(req.query.search)
+
     res.send({
-        forcast: 'Sunny',
-        location: 'Keyport NJ'
+        products: []
+    })
+})
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'John Reiner',
+        errorMessage: 'Help article not found.'
+    })
+})
+
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'John Reiner',
+        errorMessage: 'Page not found.'
     })
 })
 
