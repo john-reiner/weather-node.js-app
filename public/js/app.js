@@ -1,13 +1,3 @@
-// console.log('the js file is loaded up bro')
-
-// fetch('http://puzzle.mead.io/puzzle')
-// .then(response => response.json())
-// .then(data => {
-//     console.log(data)
-// })
-
-
-
 const weatherForm = document.querySelector('form')
 const searchTerm = document.querySelector('input')
 const messageOne = document.getElementById('message-one')
@@ -19,7 +9,7 @@ weatherForm.addEventListener('submit', (event) => {
 
     messageOne.innerText = 'loading...'
     messageTwo.innerText = ''
-    
+
     fetch(`http://localhost:3000/weather?address=${locationSearch}`)
     .then(response => response.json())
     .then(data =>{
