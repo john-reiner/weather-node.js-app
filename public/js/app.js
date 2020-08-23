@@ -2,6 +2,7 @@ const weatherForm = document.querySelector('form')
 const searchTerm = document.querySelector('input')
 const weatherDisplay = document.getElementById('weather-display')
 
+
 const createWeatherDisplay = (data) => {
     // title
     let title = document.createElement('p')
@@ -49,6 +50,7 @@ const createWeatherDisplay = (data) => {
     tableData5.innerText = 'UV Index:'
     let tableData6 = document.createElement('td')
     tableData6.innerText = data.forecast.uv_index
+
     table.append(tableR1, tableR2, tableR3)
     tableR1.append(tableData1, tableData2)
     tableR2.append(tableData3, tableData4)
