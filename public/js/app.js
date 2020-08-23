@@ -6,16 +6,28 @@ const createWeatherDisplay = (data) => {
     // title
     let title = document.createElement('p')
     title.innerText = data.location
+    title.id = 'title'
+    let hr = document.createElement('hr')
+    hr.style.width = '90%'
     weatherDisplay.innerText = ''
+    // weatherDisplay.style.border = 'solid black 1px'
 
     let forecastData = document.createElement('div')
     forecastData.id = 'forecast'
-    //image
+    //image weather desc and div
+    let weatherDiv = document.createElement('div')
+    weatherDiv.id = 'weather-div'
+    let weatherDesc = document.createElement('p')
+    weatherDesc.innerText = data.forecast.weather_descriptions[0]
+    weatherDesc.id = 'weather-desc'
     let image = document.createElement('img')
     image.src = data.forecast.weather_icons[0]
+    image.id = 'weather-img'
+    weatherDiv.append(image, weatherDesc)
     // temp
     let temp = document.createElement('p')
     temp.innerText = data.forecast.feelslike + '°F'
+    temp.id = 'temp'
     // table
     let table = document.createElement('table')
     table.id = 'forecast-info'
@@ -30,7 +42,7 @@ const createWeatherDisplay = (data) => {
     let tableData3 = document.createElement('td')
     tableData3.innerText = 'Wind:'
     let tableData4 = document.createElement('td')
-    tableData4.innerText = data.forecast.wind_speed + 'MPH, ' + data.forecast.wind_dir
+    tableData4.innerText = data.forecast.wind_speed + 'mph, ' + data.forecast.wind_dir
     // row 3
     let tableR3 = document.createElement('tr')
     let tableData5 = document.createElement('td')
@@ -41,8 +53,8 @@ const createWeatherDisplay = (data) => {
     tableR1.append(tableData1, tableData2)
     tableR2.append(tableData3, tableData4)
     tableR3.append(tableData5, tableData6)
-    forecastData.append(image, temp, table)
-    weatherDisplay.append(title, forecastData)    
+    forecastData.append(weatherDiv, temp, table)
+    weatherDisplay.append(title, hr, forecastData)    
 }
 
 weatherForm.addEventListener('submit', (event) => {
