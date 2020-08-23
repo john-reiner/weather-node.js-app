@@ -52,3 +52,17 @@ button {
     color: white;
     padding: 8px;
 }
+
+#weather-display {
+    border: solid black 1px;
+    padding: 10px;
+    border-radius: 5px;;
+}
+#forecast {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* #forecast-info td {
+    border-bottom: 1px solid black;
+} */
